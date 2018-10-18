@@ -1,0 +1,29 @@
+.swiper{
+    position: relative;
+
+}
+
+.swiper .dots{
+    height:10px;
+    position: absolute;
+    bottom:0px;
+    left:0;
+    width:100%;
+    display: flex;
+    justify-content: center;
+
+}
+
+.swiper .dots span{
+    width:6px;
+    height:6px;
+    margin: 0 6px;
+    border-radius: 50%;
+    display: block;
+
+
+}
+
+.swiper .dots .active{
+    background:red
+}
