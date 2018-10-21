@@ -10,7 +10,9 @@ class ScrollList extends Component {
         this.state = {flag:false}
     }
     //等待接受的属性有element 再绑定时间
-    componentWillReceiveProps(nextProps){ //福组件数据更新，会触发子组件的WillReceiveProps
+    componentWillReceiveProps(nextProps){ 
+        //父组件数据更新，会触发子组件的WillReceiveProps
+        //此钩子函数，父组件没有发生状态的变化 子组件不更新
         if(nextProps.element && !this.state.flag){
             // 节流
             nextProps.element.addEventListener("scroll",()=>{

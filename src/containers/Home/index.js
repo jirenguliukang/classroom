@@ -5,15 +5,34 @@ import * as action from '../../redux/actions/home';
 import Swiper  from '../../components/Swiper/index';
 import './index.css'
 import ScrollList from '../../components/ScrollList';
+import util from '../../common/util';
 class Home extends Component {
   chooseLesson=(type)=>{
        console.log(type);
        this.props.setCurrentLesson(type);
   };
   componentDidMount(){
-    this.props.getSlider();
-    this.props.getLesson()
+    //判断redux中是否存放了数据，如果有则不去获取数据
+    if(this.props.home.lesson.lessonList.length == 0){
+      this.props.getSlider();
+      this.props.getLesson();
+    }
+    //有数据 强制更新子组件
+    if(this.props.home.lesson.lessonList.length > 0){
+      //将记录好的滚动条状态取出来赋给content元素
+      console.log(util.get('homeLocation'));
+      this.refs.scroll.scrollTop=util.get('homeLocation');
+      this.forceUpdate() //让所有组件强制更新
+    }
   }
+
+  //组件将要销毁的时候 记住滚动条的位置
+  componentWillUnmount(){
+    util.set('homeLocation',this.refs.scroll.scrollTop)
+       
+  }
+
+
   loadMore = ()=>{
     this.props.getLesson()
   }
