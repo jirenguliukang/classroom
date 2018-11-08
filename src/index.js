@@ -8,6 +8,10 @@ import App from './containers/App';
 import './common/index.css';
 import store from './redux/store';
 import {Provider} from 'react-redux';
+import Detail from "./containers/Detail/index";
+import Login from './containers/Login/login';
+import Reg from './containers/Reg/login';
+
 window._store=store;
 
 render(
@@ -18,6 +22,9 @@ render(
                 <Route exact path="/" component={Home} />
                 <Route path="/lesson" component={Lesson} />
                 <Route path="/profile" component={Profile} />
+                <Route path="/detail" component={Detail} />
+                <Route path="/login" component={Login} />
+                <Route path="/reg" component={Reg} />
             </Switch>
         </App>
     </Router>

@@ -6,10 +6,12 @@ import Swiper  from '../../components/Swiper/index';
 import './index.css'
 import ScrollList from '../../components/ScrollList';
 import util from '../../common/util';
+import {Link} from 'react-router-dom';
 class Home extends Component {
   chooseLesson=(type)=>{
        console.log(type);
-       this.props.setCurrentLesson(type);
+       this.props.setCurrentLesson(type);//只改变了类型，没有重置数据
+       this.props.getLesson();//重新获取当前类型数据
   };
   componentDidMount(){
     //判断redux中是否存放了数据，如果有则不去获取数据
@@ -53,13 +55,15 @@ render() {
         {/* {this.props.home.currentLesson} */}
         <div className="lessonList">
         <h3><i className="iconfont icon-kecheng-copy"></i>全部课程</h3>
-        {/* 课程列表 */}
+        {/* 课程列表  跳转详情页 并且带上数据*/}
         {lessonList.length?lessonList.map((item,index)=>(
-          <div key={index} className="lesson-list-item">
+          <Link to={{pathname:'/detail',state:item}}  key={index}>  
+          <div  className="lesson-list-item">
             <img src={item.url} />
             <p>{item.lesson}</p>
             <span>{item.price}</span>
-          </div>
+          </div> 
+          </Link>
         )):<div>正在加载</div> 
           
       }

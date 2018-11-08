@@ -1,0 +1,38 @@
+.login{
+    position: absolute;
+    z-index: 200;
+    top:0;
+    left:0;
+    right:0;
+    bottom: 0;
+    background: #FFF
+}
+.login img{
+    display: block;
+    margin:26px auto;
+}
+.login ul{
+    width: 90%;
+    margin:auto;
+}
+.login ul li{
+    margin-bottom: 20px;
+}
+.login ul li input{
+    width:98%;
+    padding-left: 2%;
+    height:40px;
+    border:1px solid #b5b5b6;
+    border-radius: 4px
+
+}
+.login-btn{
+    display: block;
+    width:100%;
+    height:40px;
+    background: #198ae4;
+    line-height: 40px;
+    color:#fff;
+    text-align: center;
+
+}
